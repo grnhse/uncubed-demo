@@ -1,0 +1,10 @@
+---
+
+- name: Create instance on AWS EC2
+
+  connection: local
+  gather_facts: no
+  hosts: localhost
+
+  roles:
+    - aws_instance

@@ -1,0 +1,15 @@
+---
+
+- name: Configure wordpress-db hosts
+  become: yes
+  hosts: wordpress-db
+
+  roles:
+    - mysql
+
+- name: Configure wordpress-web hosts
+  become: yes
+  hosts: wordpress-web
+
+  roles:
+    - wordpress

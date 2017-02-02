@@ -1,0 +1,11 @@
+---
+
+- name: aws_instance | Create instance
+  ec2:
+    groups: "{{ security_groups }}"
+    image: "{{ image }}"
+    instance_tags: "{{ instance_tags }}"
+    instance_type: "{{ instance_type }}"
+    key_name: "{{ key_name | default(omit) }}"
+    region: "{{ region }}"
+    user_data: "{{ user_data }}"

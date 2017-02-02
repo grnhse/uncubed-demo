@@ -1,0 +1,17 @@
+---
+
+- name: Install Apache and WordPress
+  apt: name={{ item }}
+  with_items:
+    - apache2
+    - wordpress
+
+- name: Copy Apache configuration
+  copy: src=wordpress.conf dest=/etc/apache2/sites-available/
+  notify: Reload Apache
+
+- name: Copy WordPress configuration
+  template: src=config.php.j2 dest=/etc/wordpress/config-{{ inventory_hostname }}.php
+
+- name: Enable WordPress
+  command: a2ensite wordpress.conf

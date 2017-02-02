@@ -1,0 +1,6 @@
+---
+
+db_host: 172.31.55.234
+db_name: wordpress
+db_password: demo123
+db_username: wordpress

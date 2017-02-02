@@ -1,0 +1,22 @@
+---
+
+region: us-east-1
+vpc_id: vpc-8e3f91e9
+
+security_groups:
+  http:
+    description: TCP 80 from the world
+    ingress:
+      - proto: tcp
+        from_port: 80
+        to_port: 80
+        cidr_ip: 0.0.0.0/0
+
+  ssh:
+    description: TCP 22 from the world
+    ingress:
+      - proto: tcp
+        from_port: 22
+        to_port: 22
+        cidr_ip: 0.0.0.0/0
+

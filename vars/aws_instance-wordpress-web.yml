@@ -1,0 +1,17 @@
+---
+
+security_groups:
+  - default
+  - http
+  - ssh
+image: ami-6edd3078
+instance_type: t2.medium
+instance_tags:
+  Name: wordpress-web
+key_name: valentyn
+user_data: |
+  #!/bin/bash
+
+  apt-add-repository ppa:ansible/ansible
+  apt-get update
+  apt-get install -y ansible

@@ -1,0 +1,26 @@
+---
+
+- name: Install MySQL and helpers
+  apt: name={{ item }}
+  with_items:
+    - mysql-server
+    - python-mysqldb
+
+- name: Configure MySQL for external access
+  ini_file:
+    dest: /etc/mysql/mysql.conf.d/mysqld.cnf
+    section: mysqld
+    option: bind-address
+    value: 0.0.0.0
+  notify: Restart MySQL
+
+- name: Create database
+  mysql_db:
+    name: "{{ db_name }}"
+
+- name: Create user
+  mysql_user:
+    host: "%"
+    name: "{{ db_username }}"
+    password: "{{ db_password }}"
+    priv: "{{ db_name }}.*:ALL"

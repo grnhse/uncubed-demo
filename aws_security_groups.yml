@@ -1,0 +1,10 @@
+---
+
+- name: Generate EC2 security groups
+
+  connection: local
+  hosts: localhost
+  gather_facts: no
+
+  roles:
+    - aws_security_groups

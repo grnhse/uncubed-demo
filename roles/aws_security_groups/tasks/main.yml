@@ -1,0 +1,11 @@
+---
+
+- name: Create EC2 security groups
+  ec2_group:
+    name: "{{ item.key }}"
+    description: "{{ item.value.description }}"
+    region: "{{ region }}"
+    rules: "{{ item.value.ingress | default(omit) }}"
+    rules_egress: "{{ item.value.egress | default(omit) }}"
+    vpc_id: "{{ vpc_id }}"
+  with_dict: "{{ security_groups }}"
